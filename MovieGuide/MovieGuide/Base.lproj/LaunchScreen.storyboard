@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moviepopcorn" translatesAutoresizingMaskIntoConstraints="NO" id="hoe-6M-eNm">
+                                <rect key="frame" x="37" y="204" width="300" height="259"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="259" id="iyg-1c-KH1"/>
+                                    <constraint firstAttribute="width" constant="300" id="w7u-89-C1d"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MovieGuide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqn-sl-RjB">
+                                <rect key="frame" x="45" y="212" width="120" height="29"/>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hoe-6M-eNm" firstAttribute="top" secondItem="dqn-sl-RjB" secondAttribute="top" constant="-8" id="Ihe-ox-Vug"/>
+                            <constraint firstItem="hoe-6M-eNm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="lLh-kh-hWz"/>
+                            <constraint firstItem="hoe-6M-eNm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="m2u-2R-r2V"/>
+                            <constraint firstItem="hoe-6M-eNm" firstAttribute="leading" secondItem="dqn-sl-RjB" secondAttribute="leading" constant="-8" id="nTc-rL-InH"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.266666666666666" y="355"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="moviepopcorn" width="300" height="259"/>
+    </resources>
+</document>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="beK-Ul-YwI">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movie Guide-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="145" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c7h-yV-TqB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="149" id="Scb-Pr-oFl" customClass="MovieCell" customModule="MovieGuide" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="149"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Scb-Pr-oFl" id="Fxh-5J-FW6">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="148.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="The Martian" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZf-og-tsI">
+                                                    <rect key="frame" x="113" y="61" width="254" height="27"/>
+                                                    <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="martian2015-5" translatesAutoresizingMaskIntoConstraints="NO" id="QP9-rw-jyN">
+                                                    <rect key="frame" x="15" y="8" width="90" height="133"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="5kC-A6-FFV"/>
+                                                        <constraint firstAttribute="height" constant="133" id="wLK-kQ-Ng6"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bZf-og-tsI" firstAttribute="leading" secondItem="QP9-rw-jyN" secondAttribute="trailing" constant="8" id="5pu-TZ-luh"/>
+                                                <constraint firstAttribute="trailing" secondItem="bZf-og-tsI" secondAttribute="trailing" constant="8" id="VJF-ZE-NeP"/>
+                                                <constraint firstItem="QP9-rw-jyN" firstAttribute="centerY" secondItem="Fxh-5J-FW6" secondAttribute="centerY" id="i61-O9-QNb"/>
+                                                <constraint firstItem="QP9-rw-jyN" firstAttribute="leading" secondItem="Fxh-5J-FW6" secondAttribute="leading" constant="15" id="wCs-0t-7IQ"/>
+                                                <constraint firstItem="bZf-og-tsI" firstAttribute="centerY" secondItem="Fxh-5J-FW6" secondAttribute="centerY" id="zTQ-Qq-JQ9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="posterImageView" destination="QP9-rw-jyN" id="GZY-jo-eeC"/>
+                                            <outlet property="titleLabel" destination="bZf-og-tsI" id="shB-Vm-7gO"/>
+                                            <segue destination="YvL-Me-qwW" kind="push" id="fnw-6Y-oUS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="c7h-yV-TqB" secondAttribute="trailing" id="TCq-I7-Nba"/>
+                            <constraint firstItem="c7h-yV-TqB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="caA-ip-fNy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="c7h-yV-TqB" secondAttribute="bottom" id="w7u-tw-KId"/>
+                            <constraint firstItem="c7h-yV-TqB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xYk-DX-QyW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Movie Guide" id="FaQ-BA-Eon"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="c7h-yV-TqB" id="gXl-2K-iNY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="568.5" y="316.5"/>
+        </scene>
+        <!--Movie Detail-->
+        <scene sceneID="lrA-UY-Zkq">
+            <objects>
+                <viewController id="YvL-Me-qwW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R5I-Oh-4ym"/>
+                        <viewControllerLayoutGuide type="bottom" id="ywI-ss-ieb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eXX-4x-OeA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="martian_bg" translatesAutoresizingMaskIntoConstraints="NO" id="EIo-2H-NcW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="205"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="8HG-Um-rQe"/>
+                                    <constraint firstAttribute="height" constant="205" id="RW9-Ew-UHu"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="The Martian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ir-5g-K5d">
+                                <rect key="frame" x="125" y="294" width="125" height="29"/>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="I really like the movie. I want to travel to Mars someday!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13I-Ef-44q">
+                                <rect key="frame" x="24" y="331" width="327" height="328"/>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ywI-ss-ieb" firstAttribute="top" secondItem="13I-Ef-44q" secondAttribute="bottom" constant="8" id="6YT-TR-6hW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="13I-Ef-44q" secondAttribute="trailing" constant="8" id="LgQ-Ja-NIM"/>
+                            <constraint firstItem="13I-Ef-44q" firstAttribute="leading" secondItem="eXX-4x-OeA" secondAttribute="leadingMargin" constant="8" id="MLT-pG-2X6"/>
+                            <constraint firstItem="13I-Ef-44q" firstAttribute="top" secondItem="5ir-5g-K5d" secondAttribute="bottom" constant="8" id="SAz-Je-7bJ"/>
+                            <constraint firstItem="EIo-2H-NcW" firstAttribute="top" secondItem="R5I-Oh-4ym" secondAttribute="bottom" id="aTr-i2-3lS"/>
+                            <constraint firstItem="EIo-2H-NcW" firstAttribute="leading" secondItem="eXX-4x-OeA" secondAttribute="leading" id="aZF-Xo-NUj"/>
+                            <constraint firstItem="5ir-5g-K5d" firstAttribute="top" secondItem="EIo-2H-NcW" secondAttribute="bottom" constant="25" id="gUx-aB-yFn"/>
+                            <constraint firstItem="5ir-5g-K5d" firstAttribute="centerX" secondItem="eXX-4x-OeA" secondAttribute="centerX" id="hjD-cm-fLr"/>
+                            <constraint firstItem="EIo-2H-NcW" firstAttribute="centerX" secondItem="eXX-4x-OeA" secondAttribute="centerX" id="m8z-bb-N7b"/>
+                            <constraint firstAttribute="trailing" secondItem="EIo-2H-NcW" secondAttribute="trailing" id="szK-5p-19t"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Movie Detail" id="w6Y-hE-ymD"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oDR-tm-fwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028.5" y="316.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AHx-63-OzQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="beK-Ul-YwI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cqt-cL-3Hz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="UW1-Oh-UKn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r1s-4d-JIf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="317"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="martian2015-5" width="1008" height="1494"/>
+        <image name="martian_bg" width="2915" height="1636"/>
+    </resources>
+</document>
