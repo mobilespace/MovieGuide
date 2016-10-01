@@ -12,7 +12,7 @@
 
 2.  Making the API call and getting a response object; storing it in relevant data models
 
-3.  Clean up and post-processing
+3.  Implementing local persistence of movies with Realm database.
 
 ## API:
 
@@ -29,6 +29,7 @@ Endpoint used: http://api.themoviedb.org/3/movie/now_playing
 ## Pods for MovieGuide
   pod 'Alamofire', '~> 3.5.0'
   pod 'AlamofireImage', '~> 2.5'
+  pod 'RealmSwift', '0.98.8'
 
 
 
