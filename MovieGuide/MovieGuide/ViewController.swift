@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import Alamofire
+
+let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var movies: [Movie]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        makeAPICall()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,16 +32,43 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return movies?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(
             "MovieCell", forIndexPath: indexPath) as! MovieCell
-        cell.titleLabel.text = "Suicide Squad"
-        cell.posterImageView.image = UIImage(named: "martian2015-5")
+        cell.movie = movies![indexPath.row]
         
         return cell
     }
+    
+    func makeAPICall() {
+        Alamofire.request(.GET, "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)").responseJSON { response in
+            if let json = response.result.value {
+                if let status_code = json["status_code"] as? Int {
+                    print("ERROR: Unable to hit the API with status code: \(status_code)")
+                    print("Got status message: \(json["status_message"] as! String)")
+                }
+                else {
+                    print("Connection to API successful!")
+                    self.movies = Movie.movies((json["results"] as? [NSDictionary])!)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+        
+        let movieDetailController = segue.destinationViewController as! MovieDetailController
+        
+        movieDetailController.movie = movie
+    }
+
 }
 

@@ -81,7 +81,7 @@
         <!--Movie Detail-->
         <scene sceneID="lrA-UY-Zkq">
             <objects>
-                <viewController id="YvL-Me-qwW" sceneMemberID="viewController">
+                <viewController id="YvL-Me-qwW" customClass="MovieDetailController" customModule="MovieGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="R5I-Oh-4ym"/>
                         <viewControllerLayoutGuide type="bottom" id="ywI-ss-ieb"/>
@@ -126,6 +126,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movie Detail" id="w6Y-hE-ymD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="backdropImageView" destination="EIo-2H-NcW" id="Jt0-bl-ukd"/>
+                        <outlet property="overviewLabel" destination="13I-Ef-44q" id="SEk-6c-eni"/>
+                        <outlet property="titleLabel" destination="5ir-5g-K5d" id="64O-14-VMZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDR-tm-fwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

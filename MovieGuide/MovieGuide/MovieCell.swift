@@ -7,11 +7,25 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class MovieCell: UITableViewCell {
 
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    var movie : Movie! {
+        didSet {
+            titleLabel.text = movie.movieTitle
+            
+            print(movie)
+            
+            if let moviePath = movie.moviePosterUrl {
+                posterImageView.af_setImageWithURL(moviePath)
+                print("HERE \(moviePath)")
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
