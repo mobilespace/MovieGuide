@@ -17,12 +17,9 @@ class MovieCell: UITableViewCell {
     var movie : Movie! {
         didSet {
             titleLabel.text = movie.movieTitle
-            
-            print(movie)
-            
+
             if let moviePath = movie.moviePosterUrl {
-                posterImageView.af_setImageWithURL(moviePath)
-                print("HERE \(moviePath)")
+                posterImageView.af_setImageWithURL(NSURL(string: moviePath)!)
             }
         }
     }

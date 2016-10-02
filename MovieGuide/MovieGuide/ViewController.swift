@@ -8,8 +8,11 @@
 
 import UIKit
 import Alamofire
+import RealmSwift
+import Realm
 
 let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+let realmObject = try! Realm()
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -23,7 +26,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        makeAPICall()
+        let realmObject = try! Realm()
+        
+        //Realm db path: DEBUG
+        print(Realm.Configuration.defaultConfiguration.description)
+        
+        let dbMovies = realmObject.objects(Movie.self)
+        
+        if dbMovies.count > 0 {
+            print("Found movies in DB")
+            var newMoviesArray = [Movie]()
+            for movie in dbMovies {
+                newMoviesArray.append(movie)
+            }
+            movies = newMoviesArray
+        } else {
+            //make API call and save data in the realm db
+            makeAPICall()
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
