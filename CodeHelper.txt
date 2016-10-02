@@ -1,0 +1,140 @@
+Helper Code:
+
+  pod 'Alamofire', '~> 3.5.0'
+  pod 'AlamofireImage', '~> 2.5'
+
+//MovieController
+
+var movie: Movie?
+
+
+self.titleLabel.text = movie?.movieTitle
+        self.overviewLabel.text = movie?.movieOverview
+
+        if(movie?.movieBackdropPathUrl != nil) {
+            backdropImageView.af_setImageWithURL(movie!.movieBackdropPathUrl!)
+        }
+
+
+//MovieCell
+import AlamofireImage
+
+var movie : Movie! {
+        didSet {
+            movieTitleLabel.text = movie.movieTitle
+
+            if(movie.moviePosterUrl != nil) {
+                moviePosterImageView.af_setImageWithURL(movie.moviePosterUrl!)
+            }
+        }
+    }
+
+//Movie
+
+let baseImageURL = http://image.tmdb.org/t/p/w500
+
+var moviePosterUrl: NSURL?
+    var movieTitle: String?
+    var movieOverview: String?
+    var movieBackdropPathUrl: NSURL?
+
+    init(dictionary: NSDictionary) {
+
+        if let moviePosterUrlString = dictionary["poster_path"] as? String {
+            moviePosterUrl = NSURL(string: baseImageURL + moviePosterUrlString)!
+        } else {
+            moviePosterUrl = nil
+        }
+
+        if let movieBackdropPathString = dictionary["backdrop_path"] as? String {
+            movieBackdropPathUrl = NSURL(string: baseImageURL + movieBackdropPathString)!
+        } else {
+            movieBackdropPathUrl = nil
+        }
+
+        self.movieTitle = dictionary["title"] as? String
+
+        self.movieOverview = dictionary["overview"] as? String
+    }
+
+	class func movies(array: [NSDictionary]) -> [Movie] {
+        var movies = [Movie]()
+        for dictionary in array {
+            let movie = Movie(dictionary: dictionary)
+            movies.append(movie)
+        }
+        return movies
+    }
+
+//ViewController
+
+import Alamofire
+
+let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+
+var movies: [Movie]? = []
+
+let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
+        cell.movie = movies![indexPath.row]
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+
+func makeAPICall() {
+        Alamofire.request(.GET, "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)").responseJSON { response in
+             if let json = response.result.value {
+                if let status_code = json["status_code"] as? Int {
+                    print("ERROR: Unable to hit the API with status code: \(status_code)")
+                    print("Got status message: \(json["status_message"] as! String)")
+                }
+                else {
+                    print("Connection to API successful!")
+                    self.movies = Movie.movies((json["results"] as? [NSDictionary])!)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+
+        let movieController = segue.destinationViewController as! MovieController
+
+        movieController.movie = movie
+    }
+
+
+Milestone 3: Realm Helper Code
+
+pod 'RealmSwift', '0.98.8'
+
+import RealmSwift
+import Realm
+
+let realmObject = try! Realm()
+
+//Realm db path: DEBUG
+        print(Realm.Configuration.defaultConfiguration.description)
+
+        let dbMovies = realmObject.objects(Movie.self)
+
+        if dbMovies.count > 0 {
+            print("Found movies in DB")
+            var newMoviesArray = [Movie]()
+            for movie in dbMovies {
+                newMoviesArray.append(movie)
+            }
+            movies = newMoviesArray
+        } else {
+            //make API call and save data in the realm db
+            makeAPICall()
+        }
+
+//write the settings object to db for persistence
+            try! realmObject.write() {
+                realmObject.add(movie)
+                print("New Movie saved with name: \(movie.movieTitle)")
+                movies.append(movie)
+            }

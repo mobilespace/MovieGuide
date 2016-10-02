@@ -26,10 +26,13 @@ Endpoint used: http://api.themoviedb.org/3/movie/now_playing
 
 ![MovieGuide demo](MovieGuide.gif)
 
+## Code Helper:
+
+[Click here](CodeHelper.txt)
+
 ## Pods for MovieGuide
   pod 'Alamofire', '~> 3.5.0'
+
   pod 'AlamofireImage', '~> 2.5'
+
   pod 'RealmSwift', '0.98.8'
-
-
-
