@@ -4,7 +4,7 @@
 
 ## Project 2: MovieGuide
 
-**Objective:** Learning how to make a hit a web API and process the response JSON into model objects.
+**Objective:** Learning how to make an API request and process the response JSON into model objects.
 
 ## Milestones:
 
